@@ -1,0 +1,204 @@
+body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    height: 5rem;
+    background-color: white;
+
+}
+
+/* For Icon color */
+.fa-paper-plane {
+    color: red;
+    font-size: 1.3rem;
+}
+
+.nav-link {
+    color: #222222 !important;
+}
+
+/* footer */
+.f-info-links a {
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+    color: #222222;
+}
+
+.f-info-links,
+.f-info-social,
+.f-info-brand {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-info-social i {
+    font-size: 1.1rem;
+    margin-right: 1rem;
+}
+
+.f-info {
+    text-align: center;
+    display: flex;
+    height: 8rem;
+    background-color: #ebebeb;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-evenly;
+}
+
+/* cards */
+.card {
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top {
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body {
+    padding: 0;
+}
+
+.card-text p {
+    font-weight: 400 !important;
+}
+
+.event-link {
+    text-decoration: none;
+}
+
+/* top image */
+.carousel-container {
+    position: relative;
+    /* Essential for positioning arrows */
+    width: 100%;
+    max-width: 1200px;
+    /* Or whatever width your banner should be */
+    margin: 0 auto;
+    /* Center the carousel */
+    overflow: hidden;
+    /* Hides images that are not currently visible */
+    border-radius: 12px;
+    /* Matches your previous banner styling */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    /* Optional: add some depth */
+}
+
+.carousel-track {
+    display: flex;
+    /* Arranges slides in a row */
+    transition: transform 0.5s ease-in-out;
+    /* Smooth slide transition */
+}
+
+.carousel-slide {
+    min-width: 100%;
+    /* Each slide takes full width of the track */
+    box-sizing: border-box;
+    /* Include padding/border in element's total width */
+}
+
+.carousel-slide img {
+    width: 100%;
+    /* Make image fill its slide container */
+    display: block;
+    border-radius: 12px;
+    /* Match container border-radius */
+}
+
+/* Arrow Styling */
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /* Vertically center the button */
+    background: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    line-height: 1;
+    /* Adjust if arrow icon isn't centered */
+    border-radius: 50%;
+    /* Make them round */
+    z-index: 10;
+    /* Ensure arrows are on top of images */
+    outline: none;
+    /* Remove focus outline */
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+
+.carousel-button:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.arrow-icon {
+    display: inline-block;
+    vertical-align: middle;
+    /* Helps center the arrow symbol */
+}
+
+/* Optional: Dots Navigation Styling */
+.carousel-nav-dots {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+
+.carousel-nav-dots .dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.carousel-nav-dots .dot.active {
+    background-color: #717171;
+}
+
+/* Card effect(overly effect) */
+.card-img-overlay {
+    opacity: 0;
+}
+
+.card-img-overlay:hover {
+    opacity: 0.2;
+    background-color: white;
+}
+
+/* button */
+.add-btn {
+    border: none !important;
+    background-color: #fe424d !important;
+}

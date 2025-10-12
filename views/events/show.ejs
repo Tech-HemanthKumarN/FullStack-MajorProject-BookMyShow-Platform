@@ -1,0 +1,17 @@
+<% layout('/layouts/boilerplate')%>
+<body>
+    <h3>Events details</h3>
+    <ul>
+        <li><%= event.title%></li>
+        <li><%= event.description%></li>
+        <li>&#8377;<%= event.ticketPrice.toLocaleString("en-IN")%></li>
+        <li><%= event.venue%></li>
+        <li><%= event.city%></li>
+    </ul>
+    <br>
+    <a href="/events/<%=event._id%>/edit">Edit This Listing</a>
+    <br> <br>
+    <form method="POST" action="/events/<%=event._id%>?_method=DELETE">
+        <button>Delete This Listing</button>
+    </form>
+</body>

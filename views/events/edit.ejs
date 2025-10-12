@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHive</title>
+</head>
+
+ <h3>Edit Your Event</h3>
+<body>
+    <form method="POST" action="/events/<%= event._id%>?_method=PUT"">
+        <input type="text" name="event[title]" id="title" value="<%=event.title%>">
+        <br /> <br />
+         <textarea type="text" name="event[description]" id="description" value="<%=event.description%>" rows="6" cols="20"></textarea>
+        <br /> <br />
+        <input type="text" name="event[image]" id="image" value="<%=event.image.url%>">
+        <br /> <br />
+        <input type="number" name="event[ticketPrice]" id="ticketPrice" value="<%=event.ticketPrice%>">
+        <br /> <br />
+        <input type="text" name="event[city]" id="city" value="<%=event.city%>">
+        <br /> <br />
+        <input type="text" name="event[venue]" id="venue" value="<%=event.venue%>">
+        <br /> <br />
+        <button>Edit</button>
+        
+
+    </form>
+</body>
+
+</html>

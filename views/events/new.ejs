@@ -1,0 +1,55 @@
+<% layout('/layouts/boilerplate')%>
+    <h3>Create New Event</h3>
+    <div class="row">
+        <div class="col-8 offset-2">
+
+            <body>
+                <form method="POST" action="/events">
+                    <div class="mb-3 mt-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" name="event[title]" id="title" placeholder="Enter Title"
+                            class="form-control">
+                    </div>
+
+
+                    <div class="mb-3 mt-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea type="text" name="event[description]" id="description" placeholder="Enter description"
+                            rows="4" cols="10" class="form-control"></textarea>
+                    </div>
+
+
+                    <div class="mb-3 mt-3">
+                        <label for="image" class="form-label">Image</label>
+                        <input type="text" name="event[image]" id="image" placeholder="Enter image URL"
+                            class="form-control">
+                    </div>
+
+                    <div class="row">
+
+                        <div class="mb-3 mt-3 col-4">
+                            <label for="ticketPrice" class="form-label">Ticket-Price</label>
+                            <input type="number" name="event[ticketPrice]" id="ticketPrice"
+                                placeholder="1000" class="form-control">
+                        </div>
+
+                        <div class="mb-3 mt-3 col-md-8">
+                            <label for="city" class="form-label">City</label>
+                            <input type="text" name="event[city]" id="city" placeholder="Benglore"
+                                class="form-control">
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3 mt-3">
+                        <label for="venue" class="form-label">Venue</label>
+                        <input type="text" name="event[venue]" id="venue" placeholder="S Mall"
+                            class="form-control">
+
+                    </div>
+
+                    <button class="btn btn-dark add-btn" class="mb-3 mt-3">Add</button>
+                </form>
+        </div>
+    </div>
+    </body>
