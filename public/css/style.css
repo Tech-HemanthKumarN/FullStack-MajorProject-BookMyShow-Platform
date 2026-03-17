@@ -202,3 +202,29 @@ body {
     border: none !important;
     background-color: #fe424d !important;
 }
+/* Book Ticket Page */
+
+/* .book-outer-img{
+    height: 1rem;
+    width: 10rem;
+} */
+.book-img{
+    height: 18rem;
+    width: 13rem;
+}
+.book-title{
+    font-size: 700 !important;
+}
+
+/* Show image */
+.show-img{
+    height: 80vh;
+}
+.btns{
+    display: flex;
+    gap: 1rem;
+}
+.show-card{
+    padding-left: 0;
+    padding-right: 0;
+}

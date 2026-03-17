@@ -1,31 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
+<% layout('/layouts/boilerplate')%>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EventHive</title>
-</head>
+    <div class="row">
+        <div class="col-8 offset-3">
+            <h3>Edit Your Event</h3>
 
- <h3>Edit Your Event</h3>
-<body>
-    <form method="POST" action="/events/<%= event._id%>?_method=PUT"">
-        <input type="text" name="event[title]" id="title" value="<%=event.title%>">
-        <br /> <br />
-         <textarea type="text" name="event[description]" id="description" value="<%=event.description%>" rows="6" cols="20"></textarea>
-        <br /> <br />
-        <input type="text" name="event[image]" id="image" value="<%=event.image.url%>">
-        <br /> <br />
-        <input type="number" name="event[ticketPrice]" id="ticketPrice" value="<%=event.ticketPrice%>">
-        <br /> <br />
-        <input type="text" name="event[city]" id="city" value="<%=event.city%>">
-        <br /> <br />
-        <input type="text" name="event[venue]" id="venue" value="<%=event.venue%>">
-        <br /> <br />
-        <button>Edit</button>
-        
+            <body>
+                <form method="POST" action="/events/<%= event._id%>?_method=PUT" class="needs-validation" novalidate>
+                    <div class="mb-3 mt-3">
+                        <label for="title" class="form-label">Event/Movie-Title</label>
+                        <input type="text" name="event[title]" id="title" value="<%=event.title%>" class="form-control"
+                            required>
+                        <div class="valid-feedback">
+                            Looks Good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Pls enter Title!
+                        </div>
+                    </div>
 
-    </form>
-</body>
 
-</html>
+                    <div class="mb-3 mt-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea type="text" name="event[description]" id="description" value="<%=event.description%>"
+                            rows="3" cols="6" class="form-control" required></textarea>
+                        <div class="valid-feedback">
+                            Looks Good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Pls enter Description!
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3 mt-3">
+                        <label for="image" class="form-label">Image</label>
+                        <input type="text" name="event[image][url]" id="image" value="<%=event.image.url%>"
+                            class="form-control" required>
+                        <div class="valid-feedback">
+                            Looks Good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Image should be valid!
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="mb-3 mt-3 col-4">
+                            <label for="ticketPrice" class="form-label">Ticket-Price</label>
+                            <input type="number" name="event[ticketPrice]" id="ticketPrice"
+                                value="<%=event.ticketPrice%>" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Price should be valid!
+                            </div>
+                        </div>
+
+                        <div class="mb-3 mt-3 col-md-8">
+                            <label for="city" class="form-label">City</label>
+                            <input type="text" name="event[city]" id="city" value="<%=event.city%>" class="form-control"
+                                required>
+                            <div class="invalid-feedback">
+                                City should be valid!
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3 mt-3">
+                        <label for="venue" class="form-label">Venue</label>
+                        <input type="text" name="event[venue]" id="venue" value="<%=event.venue%>" class="form-control"
+                            required>
+                        <div class="invalid-feedback">
+                            Venue should be valid!
+                        </div>
+                    </div>
+
+                    <button class="btn btn-dark add-btn mb-3 mt-3">Edit</button>
+
+
+                </form>
+        </div>
+    </div>
+    </body>

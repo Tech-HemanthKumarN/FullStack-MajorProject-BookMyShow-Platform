@@ -1,0 +1,160 @@
+<style>
+    /* General Styling */
+    body {
+        background-color: #f4f4f4;
+    }
+
+    .booking-page-container {
+        max-width: 1200px;
+        margin: auto;
+        font-family: "Plus Jakarta Sans", sans-serif !important;
+    }
+
+    /* Column 1: Movie Poster Styling */
+    .movie-poster-card {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .poster-overlay {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        color: white;
+        padding: 10px;
+    }
+
+    /* Column 2: Movie Details Styling */
+    .movie-details-card {
+        padding: 15px;
+    }
+
+    .movie-title {
+        font-size: 2.8rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    .rating-box {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background-color: #2c3e50;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 8px;
+        width: fit-content;
+        font-size: 1.1rem;
+    }
+
+    .rating-box .fa-star {
+        color: #f1c40f;
+        /* Yellow star */
+    }
+
+    .info-tags .tag {
+        background-color: #ecf0f1;
+        color: #34495e;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        margin-right: 10px;
+    }
+
+    .info-line {
+        color: #555;
+        font-size: 1rem;
+    }
+
+    .description-box h4 {
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    /* The Big "Call to Action" Button */
+    .cta-button {
+        background-color: #e74c3c;
+        /* Red color like BookMyShow */
+        color: white;
+        font-size: 1.2rem;
+        font-weight: bold;
+        padding: 12px 40px;
+        border-radius: 8px;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .cta-button:hover {
+        background-color: #c0392b;
+        /* Darker red on hover */
+        color: white;
+    }
+</style>
+<!-------------------------------------------------------------------------- -->
+<% layout('/layouts/boilerplate')%>
+    <br><br>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <div class="booking-page-container">
+        <div class="row mt-5">
+            <div class="col-md-4 offset-md-1">
+                <div class="movie-poster-card">
+                    <img src="<%= event.image.url %>" class="img-fluid rounded" alt="<%= event.title %> poster">
+                    <div class="poster-overlay">
+                        <p class="text-center mt-2">In cinemas</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="movie-details-card">
+                    <h1 class="movie-title">
+                        <%= event.title %>
+                    </h1>
+
+                    <div class="rating-box">
+                        <i class="fas fa-star"></i>
+                        <b>
+                            <%= event.rating %>/10
+                        </b> (<%= event.votes %>)
+                    </div>
+
+                    <div class="info-tags my-4">
+                        <span class="tag">
+                            <%= event.language %>
+                        </span>
+                        <span class="tag">
+                            <%= event.genre %>
+                        </span>
+                    </div>
+
+                    <div class="info-line">
+                        <span>
+                            <%= event.duration %>
+                        </span> &bull;
+                        <span>
+                            <%= event.genre %>
+                        </span> &bull;
+                        <span>UA</span> &bull;
+                        <span>
+                            <%= new Date(event.releaseDate).toLocaleDateString('en-GB', { day: 'numeric' ,
+                                month: 'short' , year: 'numeric' }) %>
+                        </span>
+                    </div>
+
+                    <div class="description-box mt-4">
+                        <h4>About the movie</h4>
+                        <p>
+                            <%= event.description %>
+                        </p>
+                    </div>
+
+                    <a href="/events/<%= event._id %>/seats" class="btn cta-button mt-4">Book Tickets</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>

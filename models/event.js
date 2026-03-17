@@ -49,18 +49,25 @@ const eventSchema = new Schema({
     // },
     // ticketsAvailable: Number, // NEW: Total tickets for sale
     // // NEW FIELD: To categorize the event
-    // category: {
-    //     type: String,
-    //     enum: ["Movie","Music", "Comedy", "Workshop", "Tech", "Sports", "Arts"],
-    //     required: true,
-    // },
+    category: {
+        type: String,
+        // enum: ["Movie","Music", "Comedy", "Workshop", "Tech", "Sports", "Arts"],
+        required: true,
+    },
 
-    // reviews: [
-    //     {
-    //         type: Schema.Types.ObjectId,
-    //         ref: "Review", // This logic stays exactly the same
-    //     },
-    // ],
+    reviews: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Review",
+        }
+    ],
+    // --- ADD THESE NEW FIELDS ---
+    rating: Number,       // e.g., 8.8
+    votes: String,        // e.g., "18.4K Votes"
+    language: String,     // e.g., "Hindi, English"
+    genre: String,        // e.g., "Adventure, Drama, Thriller"
+    duration: String,     // e.g., "2h 48m"
+    releaseDate: Date,
 
     // // This is now the Event Organizer
     // owner: {

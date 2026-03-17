@@ -1,0 +1,146 @@
+<style>
+    /* --- Checkout Page General Styling --- */
+    .checkout-container {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f8f9fa;
+        /* Light grey background for the page */
+    }
+
+    /* --- Card Styling --- */
+    .checkout-card {
+        background-color: #ffffff;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        padding: 2.5rem;
+        /* More padding inside the card */
+    }
+
+    .checkout-card .card-title {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: #343a40;
+    }
+
+    .checkout-card .card-text {
+        font-size: 1rem;
+        color: #6c757d;
+    }
+
+    /* --- Form Input Styling --- */
+    .checkout-card .form-label b {
+        font-size: 1.1rem;
+        color: #495057;
+    }
+
+    .checkout-card .form-control {
+        height: 50px;
+        border-radius: 8px;
+        border: 1px solid #ced4da;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .checkout-card .form-control:focus {
+        border-color: #e74c3c;
+        /* Red border on focus */
+        box-shadow: 0 0 0 0.25rem rgba(231, 76, 60, 0.25);
+    }
+
+    /* --- Price Display --- */
+    .price-details {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .price-details p {
+        font-size: 1rem;
+        color: #6c757d;
+    }
+
+    .price-details h4 {
+        font-weight: 700;
+        color: #343a40;
+    }
+
+    /* --- Main "Call to Action" Button --- */
+    /* This reuses and reinforces the .cta-button style from the previous page */
+    .cta-button {
+        background-color: #e74c3c;
+        /* Red color */
+        color: white;
+        font-size: 1.2rem;
+        font-weight: bold;
+        padding: 12px 40px;
+        border-radius: 8px;
+        border: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        width: 100%;
+        /* Make button full-width */
+    }
+
+    .cta-button:hover {
+        background-color: #c0392b;
+        /* Darker red on hover */
+        color: white;
+        transform: translateY(-2px);
+        /* Slight lift on hover */
+    }
+</style>
+
+<!-- __________________________________________________________________________________ -->
+<% layout('/layouts/boilerplate')%>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            <h2 class="mb-4">Complete Your Booking</h2>
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <%= event.title %>
+                    </h4>
+                    <p class="card-text text-muted">
+                        <%= event.venue %>, <%= event.city %>
+                    </p>
+                    <hr>
+
+                    <form method="POST" action="/events/<%= event._id %>/checkout">
+                        <div class="mb-3">
+                            <label for="tickets" class="form-label"><b>Number of Tickets</b></label>
+                            <input type="number" class="form-control" id="tickets" name="ticketCount" value="1" min="1"
+                                max="10" required>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="mb-0">Ticket Price: &#8377;<%= event.ticketPrice.toLocaleString("en-IN") %>
+                            </p>
+                            <h4 class="mb-0">Total: &#8377;<span id="totalPrice">
+                                    <%= event.ticketPrice.toLocaleString("en-IN") %>
+                                </span></h4>
+                        </div>
+
+                        <hr>
+                        <button type="submit" class="btn cta-button w-100 mt-3">Proceed to Checkout</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to calculate total price in real-time
+        const ticketPrice = <%= event.ticketPrice %>;
+        const ticketInput = document.getElementById('tickets');
+        const totalPriceSpan = document.getElementById('totalPrice');
+
+        ticketInput.addEventListener('input', (e) => {
+            const numberOfTickets = parseInt(e.target.value);
+            if (numberOfTickets > 0) {
+                const total = ticketPrice * numberOfTickets;
+                totalPriceSpan.innerText = total.toLocaleString("en-IN");
+            } else {
+                totalPriceSpan.innerText = "0";
+            }
+        });
+    </script>
